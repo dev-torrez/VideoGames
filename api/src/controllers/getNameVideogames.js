@@ -14,7 +14,7 @@ const getNameVideogames = async(req, res)=>{
                 }
             }
         })
-        const response = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${key}&limit=2`);
+        const response = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${key}`);
         const api = response.data.results;
         if(api.length>0){
             const videogamesMax = [];
@@ -35,7 +35,7 @@ const getNameVideogames = async(req, res)=>{
                             id: element.id,
                             name: element.name,
                             description: respuesta.data.description,
-                            platforms: element.platforms.map(el=>el.platform.name),
+                            platforms: element.platforms? element.platforms.map(el=>el.platform.name): null,
                             image: element.background_image,
                             date: element.released,
                             rating: element.rating,

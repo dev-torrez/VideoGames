@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
+
+.container{
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 210px;
+    height: 100vh;
+    position: fixed;
+    padding-top: 85px;
+}
+
+select{
+    all: unset;
+    background-color: white;
+    cursor: default;
+    appearance: auto;
+    font-family: 'Kanit', sans-serif;
+    font-size: 16px;
+    margin: 15px;
+    border-radius: 10px;
+}
+
+.boton{
+    all: unset;
+    background-color: blue;
+    border-radius: 5px;
+    font-size: 20px;
+    text-align: center;
+    width: 180px;
+    height: 40px;
+    position: relative;
+    left: 12px;
+    top: 330px;
+    cursor: pointer;
+    color: white;
+    font-family:  'Kanit', sans-serif;
+}

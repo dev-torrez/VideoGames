@@ -1,0 +1,35 @@
+.container_videogames{
+    width: 250px;
+    height: 99.5vh;
+    position: relative;
+    top: 90px;
+    left: 220px;
+}
+
+.container_videogames h3{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.container_games{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    justify-items: center;
+}
+
+.container_current{
+    position: fixed;
+    top: 600px;
+    width: 1139px;
+    left: 210px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.container_current button{
+    all: unset;
+}

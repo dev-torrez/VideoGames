@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
+
+.container_game{
+    width: 350px;
+    height: 166px;
+    background-color: black;
+    border-radius: 5px;
+}
+
+.container_game img{
+    width: 200px;
+    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+}
+
+.container_game p{
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    text-align: center;
+}
+
+.action{
+    position: relative;
+    top: -80px;
+    left: 50px;
+}

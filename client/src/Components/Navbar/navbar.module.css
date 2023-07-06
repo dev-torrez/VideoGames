@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
+
+/* font-family: 'Kanit', sans-serif;
+font-family: 'Lato', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'PT Sans', sans-serif; */
+
+.container_navbar{
+    height: 80px;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid white;
+    position: fixed;
+    z-index: 100;
+}
+
+.container_game{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.container_game img{
+    width: 60px;
+    margin-left: 20px;
+}
+ .container_game h1{
+    margin-left: 10px;
+    color: white;
+    font-family: 'Kanit', sans-serif;
+ }
+
+.container_buscar{
+    display: flex;
+    align-items: center;
+    margin-left: 550px;
+}
+
+.container_buscar p{
+    color: white;
+    margin-right: 100px;
+    cursor: pointer;
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    border-bottom: 1px solid red;
+    transition: border-color 1s;
+}
+
+.container_buscar p:hover{
+    border-color: transparent;
+}
+
+.container_buscar input{
+    all: unset;
+    width: 250px;
+    height: 15px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 10px;
+    font-family: 'Kanit', sans-serif;
+    caret-color: gray;
+}
+
+.container_buscar button{
+    all: unset;
+    width: 70px;
+    height: 30px;
+    background-color: rgb(39, 39, 131);
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}

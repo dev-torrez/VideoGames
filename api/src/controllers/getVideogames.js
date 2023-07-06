@@ -8,7 +8,7 @@ const getVideogames = async(req, res)=>{
         try{
             const dbVideogames = await Videogame.findAll();
 
-            for (let i = 1; i < 2; i++) {
+            for (let i = 1; i < 3; i++) {
                 const promesa = axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`);
                 promesas.push(promesa); 
               }
