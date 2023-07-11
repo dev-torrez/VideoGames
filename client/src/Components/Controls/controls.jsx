@@ -1,4 +1,5 @@
 import style from './controls.module.css';
+import {Link} from 'react-router-dom'
 
 export default function Controls(){
     return(
@@ -27,15 +28,17 @@ export default function Controls(){
             <select className={style.container_filter_origin}>
                 <option value="opcion1">Todos</option>
                 <option value="opcion2">Creados</option>
-                <option value="opcion3">API</option>
+                <option value="opcion3">Api</option>
             </select>
             <select className={style.container_filter_order}>
                 <option value="">Mayor a Menor</option>
                 <option value="">Menor a Mayor</option>
-                <option value="">A - Z</option>
-                <option value="">Z - A</option>
+                <option value="">A - z</option>
+                <option value="">Z - a</option>
             </select>
+            <Link to={'/form'} style={{ textDecoration: 'none' }}>
             <button className={style.boton}>Crear Juego</button>
+            </Link>
         </div>
     )
 }

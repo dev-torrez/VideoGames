@@ -15,12 +15,24 @@ export const videoGames =()=>{
 }
 
 export const nameFilter = (inputValue)=>{
-  console.log(inputValue)
   return async (dispatch)=>{
       try{
           const response = await axios.get(`http://localhost:3001/videogame?name=${inputValue}`);
           const videogame = response.data;
           dispatch({ type: 'NAME_VIDEOGAMES', payload: videogame});
+      }
+      catch(error){
+          dispatch({ type: 'FETCH_ERROR', payload: error.message });
+      }
+  }
+}
+
+export const detailVideogames = (id)=>{
+  return async (dispatch)=>{
+      try{
+          const response = await axios.get(`http://localhost:3001/videogames/${id}`);
+          const videogameDetail = response.data;
+          dispatch({type: 'ID_DETAIL', payload: videogameDetail});
       }
       catch(error){
           dispatch({ type: 'FETCH_ERROR', payload: error.message });

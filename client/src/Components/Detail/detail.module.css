@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
+
+.container_detail_videogames{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container_detail{
+    background-color: black;
+    color: white;
+    font-family: 'Kanit', sans-serif;
+    width: 90%;
+}
+.detail_image{
+    width: 300px;
+}
+.container_image_platforms{
+    display: flex;
+}
+.description{
+    font-size: 15px;
+}

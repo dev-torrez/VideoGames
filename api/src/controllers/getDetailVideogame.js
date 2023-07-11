@@ -25,7 +25,7 @@ const getDetailVideogame = async(req, res)=>{
                 rating: data.rating,
                 genre: data.genres.map(el=>el.name)
             }
-            res.status(200).json(detailVideogame)
+            res.status(200).json(detailVideogame);
         }
     }
     catch(error){

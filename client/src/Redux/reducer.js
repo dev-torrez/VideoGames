@@ -1,6 +1,6 @@
 const initialState = {
     videogames: [],
-    nameVideogame: []
+    detail:{}
 }
 
 const reducer=(state = initialState, action)=>{
@@ -15,11 +15,15 @@ const reducer=(state = initialState, action)=>{
                 ...state,
                 videogames:[...action.payload]
             }
+        case 'ID_DETAIL':
+            return{
+                ...state,
+                detail:{...action.payload}
+            }   
         default:
             return{
                 ...state
             }
     }
 }
-
 export default reducer;

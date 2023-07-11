@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
 
 .container{
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #111;
     width: 210px;
     height: 100vh;
     position: fixed;
@@ -10,18 +10,25 @@
 
 select{
     all: unset;
-    background-color: white;
-    cursor: default;
+    background-color: #111;
+    color: white;
     appearance: auto;
+    font-variant: small-caps;
     font-family: 'Kanit', sans-serif;
     font-size: 16px;
     margin: 15px;
     border-radius: 10px;
+    padding: 5px;
+}
+
+select:hover{
+    background-color: #272626;
+    cursor: pointer;
 }
 
 .boton{
     all: unset;
-    background-color: blue;
+    background-image: linear-gradient(to right, rgb(243, 12, 12), rgb(255, 127, 7));
     border-radius: 5px;
     font-size: 20px;
     text-align: center;
@@ -29,8 +36,10 @@ select{
     height: 40px;
     position: relative;
     left: 12px;
-    top: 330px;
+    top: 300px;
     cursor: pointer;
     color: white;
     font-family:  'Kanit', sans-serif;
+    font-variant: small-caps;
+    letter-spacing: 3px;
 }
