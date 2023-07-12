@@ -4,29 +4,37 @@
 }
 
 .container_home{
-    background-image: url('../../assets/home.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: black;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.container_home video{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    object-fit: cover;
+}
 
 .button_explore{
     all: unset;
-    width: 250px;
-    height: 50px;
+    width: 290px;
+    height: 70px;
     font-size: 22px;
     background-color: rgb(194, 4, 4);
     border-radius: 5px;
-    box-shadow: 15px 15px 15px black;
+    box-shadow: 3px 3px 15px rgb(78, 230, 184);
     cursor: pointer;
     font-family: sans-serif;
     font-weight: bolder;
     color: rgb(206, 190, 190);
     text-align: center;
+    position: relative;
+    font-variant: small-caps;
+    z-index: 10;
 }
 
 .button_explore:hover{

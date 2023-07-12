@@ -15,16 +15,28 @@ export function Detail({detail, detailVideogames}){
     return(
         <div className={style.container_detail_videogames}>
         <div className={style.container_detail}>
-            <p>{detail.id}</p>
+            <p className={style.id}>{detail.id}</p>
             <h3>{detail.name}</h3>
             <div className={style.container_image_platforms}>
             <img src={detail.image} alt="" className={style.detail_image}/>
-            <h4>{detail.platforms?detail.platforms.map(el=><p>{el}</p>) :null}</h4>
+            <div>
+                <p className={style.plataformas}>Plataformas</p>
+                {detail.platforms?detail.platforms.map(el=><p>{el}</p>) :null}
+            </div>
+            <div>
+                <p className={style.plataformas}>Fecha de lanzamiento</p>
+                <p>{detail.date}</p>
+            </div>
+            <div>
+                <p className={style.plataformas}>Clasificacion</p>
+                <p>{detail.rating}</p>
+            </div>
+            <div>
+                <p className={style.plataformas}>géneros</p>
+                {detail.genres?detail.genres.map(el=><p>{el}</p>): null}
+            </div>
             </div>
             <p className={style.description}>{detail.description}</p>
-            <p>{detail.date}</p>
-            <p>{detail.rating}</p>
-            <h4>{detail.genre?detail.genre.map(el=><p>{el}</p>): null}</h4>
         </div>
         </div>
     )

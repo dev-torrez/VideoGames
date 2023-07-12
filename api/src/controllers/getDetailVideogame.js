@@ -1,4 +1,4 @@
-const {Videogame} = require('../db.js');
+const {Videogame, Genre} = require('../db.js');
 require('dotenv').config();
 const axios = require('axios');
 const {key} = process.env;
@@ -8,9 +8,17 @@ const getDetailVideogame = async(req, res)=>{
     try{
         if(idVideogame.includes('-')){
             const detail = await Videogame.findOne({
-                where: { id: idVideogame }
+                where: { id: idVideogame },
+                include: Genre
             });
-            res.status(200).json(detail);
+
+            const genreNames = detail.genres.map(genre => genre.name);
+            const detailVideogame = {
+                ...detail.toJSON(),
+                genres: genreNames
+            };
+
+            res.status(200).json(detailVideogame);
         }
         else{
             const response =await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${key}`)
@@ -23,7 +31,7 @@ const getDetailVideogame = async(req, res)=>{
                 description: data.description,
                 date: data.released,
                 rating: data.rating,
-                genre: data.genres.map(el=>el.name)
+                genres: data.genres.map(el=>el.name)
             }
             res.status(200).json(detailVideogame);
         }

@@ -1,12 +1,19 @@
 const axios = require('axios');
 require('dotenv').config();
 const {key} = process.env;
-const {Videogame} = require('../db.js');
+const {Videogame, Genre} = require('../db.js');
 
 const getVideogames = async(req, res)=>{
     const promesas = [];
         try{
-            const dbVideogames = await Videogame.findAll();
+            let dbVideogames = await Videogame.findAll({include: Genre});
+              dbVideogames = dbVideogames.map((videogame) => {
+              const genres = videogame.genres.map((genre) => genre.name);
+              return {
+                ...videogame.toJSON(),
+                genres: genres,
+              };
+            });
 
             for (let i = 1; i < 3; i++) {
                 const promesa = axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`);

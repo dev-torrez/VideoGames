@@ -1,6 +1,7 @@
 const initialState = {
     videogames: [],
-    detail:{}
+    detail:{},
+    genres:[]
 }
 
 const reducer=(state = initialState, action)=>{
@@ -20,6 +21,11 @@ const reducer=(state = initialState, action)=>{
                 ...state,
                 detail:{...action.payload}
             }   
+        case 'GENRES':
+            return{
+                ...state,
+                genres: [...action.payload]
+            }    
         default:
             return{
                 ...state
