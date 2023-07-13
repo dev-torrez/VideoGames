@@ -1,17 +1,11 @@
 import style from './controls.module.css';
 import {Link} from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from 'react';
-import { allGenres, genderFilter, originFilter, orderFilter } from '../../Redux/action.js';
+import { useDispatch } from "react-redux"
+import { genderFilter, originFilter, orderFilter } from '../../Redux/action.js';
 
 export default function Controls(){
 
     const dispatch = useDispatch();
-    const genres = useSelector((state) => state.genres);
-
-    useEffect(()=>{
-        dispatch(allGenres())
-    },[dispatch])
 
 
     const handleSelectGender = (event)=>{
@@ -26,11 +20,13 @@ export default function Controls(){
         dispatch(orderFilter(event.target.value));
     }
 
+    const generos = ['Action', 'Indie', 'Adventure', 'RPG', 'Strategy', 'Shooter', 'Casual', 'Simulation', 'Puzzle', 'Arcade', 'Platformer', 'Massively Multiplayer', 'Racing', 'Sports', 'Fighting', 'Family', 'Board Games', 'Educational', 'Card'];
+
     return(
         <div className={style.container}>
             <select className={style.container_filter_genre} onChange={handleSelectGender}>
                 <option value="todos">Todos</option>
-                {genres.map((el, id)=><option value={el} key={id}>{el}</option>)}
+                {generos.map((genero, id)=><option value={genero} key={id}>{genero}</option>)}
             </select>
             <select className={style.container_filter_origin} onChange={handleSelectOrigin}>
                 <option value="todos">Todos</option>
@@ -38,7 +34,7 @@ export default function Controls(){
                 <option value="api">Api</option>
             </select>
             <select className={style.container_filter_order} onChange={handleSelectOrder}>
-                <option value="">Ordenar</option>
+                <option value="normal">Normal</option>
                 <option value="mayor">Mayor a Menor</option>
                 <option value="menor">Menor a Mayor</option>
                 <option value="az">A - z</option>

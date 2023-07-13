@@ -1,9 +1,9 @@
 const initialState = {
     videogames: [],
     detail:{},
-    genres:[],
     genresFilter:[],
-    maxminFilter:[]
+    maxminFilter:[],
+    recursoExtra:[]
 }
 
 const reducer=(state = initialState, action)=>{
@@ -12,6 +12,8 @@ const reducer=(state = initialState, action)=>{
             return{
                 ...state,
                 videogames:[...action.payload],
+                recursoExtra:[...action.payload],
+                genresFilter:[...action.payload]
             }
         case 'NAME_VIDEOGAMES':
             return{
@@ -24,22 +26,19 @@ const reducer=(state = initialState, action)=>{
                 ...state,
                 detail:{...action.payload}
             }   
-        case 'GENRES':
-            return{
-                ...state,
-                genres: [...action.payload]
-            }    
         case 'GENDER_FILTER':
             return{
                 ...state,
                 videogames:[...action.payload],
-                genresFilter:[...action.payload]
+                genresFilter:[...action.payload],
+                recursoExtra:[...action.payload]
             }    
         case 'ORIGIN_FILTER':
             if(action.payload === 'todos'){
                 return{
                     ...state,
-                    videogames:[...state.genresFilter]
+                    videogames:[...state.genresFilter],
+                    recursoExtra:[...state.genresFilter]
                 }
             }
             if(action.payload === 'creados'){
@@ -55,6 +54,12 @@ const reducer=(state = initialState, action)=>{
                 }
             }
         case 'ORDER_FILTER':
+            if(action.payload === 'normal'){
+                return{
+                    ...state,
+                    videogames:[...state.recursoExtra]
+                }
+            }
             if(action.payload === 'mayor'){
                 return{
                     ...state,
@@ -79,6 +84,7 @@ const reducer=(state = initialState, action)=>{
                     videogames:[...state.videogames.sort((a, b)=>{return b.name.localeCompare(a.name)})]
                 }
             }
+            break;
         default:
             return{
                 ...state

@@ -1,83 +1,137 @@
+import { useState } from 'react';
 import style from './form.module.css';
+import axios from 'axios'
 
 export default function Form(){
+
+    const [dato, setDato] = useState({ name: '', image: '', description: '', platforms: [], date: '', rating: 0, genres: []});
+    const [message, setMessage] = useState('')
+
+    const validateName =  /^(?!.* $)[A-Z][a-z ]+$/;
+    const validateImage = /^(http(s):\/\/.)[-a-zA-Z0-9@:%._~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_.~#?&//=]*)$/;
+    const validateDescription = /^[A-Z a-z].{10,}$/;
+
+    const onchangeDatos = (event)=>{
+        const newDato = {...dato, [event.target.name]: event.target.value}
+        setDato(newDato);
+    }
+    
+    const handleEnviarDatos = ()=>{
+        if(!dato.name || !dato.image || !dato.description || dato.platforms.length === 0 || !dato.date || dato.rating === 0 || dato.genres.length === 0){
+            setMessage('Faltan datos a completar')
+        }
+        else{
+            if(!validateName.test(dato.name)){
+                setMessage('El nombre no es valido')
+            }
+            else{
+                if(!validateImage.test(dato.image)){
+                    setMessage('La imagen no es correcto')
+                }
+                else{
+                    if(!validateDescription.test(dato.description)){
+                        setMessage('La descripcion debe contener mas letras')
+                    }
+                    else{
+                        if(dato.date.length > 10){
+                            setMessage('el tiempo esta mal')
+                        }
+                        else{
+                            if(dato.rating > 10 || dato.rating <0){
+                                setMessage('el Rating debe estar entre 0-10')
+                            }
+                            else{
+                                axios.post('http://localhost:3001/videogames', dato)
+                                setMessage('El juego fue creado con Exito')
+                                setDato({ name: '', image: '', description: '', platforms: [], date: '', rating: 0, genres: []})
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    const estadoControl = ()=>{
+        setMessage('')
+    }
+
+    const platformInput=(event)=>{
+        if(event.target.checked === true){
+             const newInput = {...dato, platforms: [...dato.platforms, event.target.name]}
+            setDato(newInput);
+        } 
+        else{
+            const newInput = {...dato, platforms: [...dato.platforms.filter(el=>el !== event.target.name)]}
+            setDato(newInput);
+        }
+    }
+
+    const genreInput=(event)=>{
+        if(event.target.checked === true){
+            const newInput = {...dato, genres: [...dato.genres, event.target.name]}
+            setDato(newInput);
+        } 
+        else{
+            const newInput = {...dato, genres: [...dato.genres.filter(el=>el !== event.target.name)]}
+            setDato(newInput);
+        }
+    }
+
+    const generos = ['Action', 'Indie', 'Adventure', 'RPG', 'Strategy', 'Shooter', 'Casual', 'Simulation', 'Puzzle', 'Arcade', 'Platformer', 'Massively Multiplayer', 'Racing', 'Sports', 'Fighting', 'Family', 'Board Games', 'Educational', 'Card'];
+
+    const plataformas = ['PC', 'iOS', 'Android', 'macOS', 'PLay Station 4', 'Play Station 5', 'xBOX', 'PS Vita']
+    console.log(dato.date)
     return(
         <div className={style.container_form}>
             <div className={style.container_form_inputs}>
                 <div className={style.container_form_inputs_label}>
                 <h1>Crear Videojuego</h1>
                 <label htmlFor="">Nombre</label>
-                <input type="text" className={style.input_normal}/>
+                <input type="text" value={dato.name} name='name' onChange={onchangeDatos} className={style.input_normal}/>
+
                 <label htmlFor="">Imagen</label>
-                <input type="url" className={style.input_normal}/>
+                <input type="url" value={dato.image} name='image' onChange={onchangeDatos} className={style.input_normal}/>
+
                 <label htmlFor="">Descripcion</label>
-                <input type="text" className={style.input_normal}/>
+                <input type="text" value={dato.description} name='description' onChange={onchangeDatos} className={style.input_normal}/>
+
                 <label htmlFor="">Fecha de lanzamiento</label>
-                <input type="date" className={style.input_normal}/>
+                <input type="date" value={dato.date} name='date' onChange={onchangeDatos} className={style.input_normal}/>
+
                 <label htmlFor="">Clasificación</label>
-                <input type="number" className={style.input_normal}/>
+                <input type="number" value={dato.rating} name='rating' onChange={onchangeDatos} className={style.input_normal}/>
+
                 <label htmlFor="">Plataformas</label>
                 <div className={style.plataformas}>
-                    <label htmlFor="">PC</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">iOS</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Android</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">macOS</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Play Station 4</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Play Station 5</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">xBOX</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">PS Vita</label>
-                    <input type="checkbox" />
+                    {plataformas.map((plataforma, id)=>{return(
+                        <div key={id}>
+                            <label htmlFor="">{plataforma}</label>
+                            <input type="checkbox" name={plataforma} onChange={platformInput}/>
+                        </div>
+                    )})}
                 </div>
+
                 <label htmlFor="">Generos</label>
                 <div className={style.genres}>
-                    <label htmlFor="">Action</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Indie</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Adventure</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">RPG</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Strategy</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Shooter</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Casual</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Simulation</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Puzzle</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Arcade</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Platformer</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Massively Multiplayer</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Racing</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Sports</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Fighting</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Family</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Board Games</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Educational</label>
-                    <input type="checkbox" />
-                    <label htmlFor="">Card</label>
-                    <input type="checkbox" />
+                    {generos.map((genero, id)=>{return(
+                        <div key={id}>
+                            <label htmlFor={genero}>{genero}</label>
+                            <input type="checkbox" name={genero} onChange={genreInput}/>
+                        </div>
+                    )})}
                 </div>
                 <br />
-                <button>Crear</button>
+                {
+                    message? 
+                    <div className={style.container_mensaje}>
+                        <div className={style.mensaje}>
+                            <p>{message}</p>
+                            <button className={style.mensaje_boton} onClick={estadoControl}>ok</button>
+                        </div>
+                    </div>: null
+                }
+                <button onClick={handleEnviarDatos} className={style.formulario_boton}>Crear</button>
                 </div>
             </div>
         </div>

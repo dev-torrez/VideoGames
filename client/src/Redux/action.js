@@ -40,19 +40,6 @@ export const detailVideogames = (id)=>{
   }
 }
 
-export const allGenres = ()=>{
-  return async(dispatch)=>{
-    try{
-      const response = await axios.get('http://localhost:3001/genres');
-      const genres = response.data;
-      dispatch({type: 'GENRES', payload: genres});
-    }
-    catch(error){
-      throw Error
-    }
-  }
-}
-
 export const genderFilter = (gender)=>{
   return async (dispatch)=> {
     try {
