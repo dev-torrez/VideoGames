@@ -21,7 +21,7 @@ export function Detail({detail, detailVideogames}){
             <img src={detail.image} alt="" className={style.detail_image}/>
             <div>
                 <p className={style.plataformas}>Plataformas</p>
-                {detail.platforms?detail.platforms.map(el=><p>{el}</p>) :null}
+                {detail.platforms?detail.platforms.map((el, id)=><p key={id}>{el}</p>) :null}
             </div>
             <div>
                 <p className={style.plataformas}>Fecha de lanzamiento</p>
@@ -33,7 +33,7 @@ export function Detail({detail, detailVideogames}){
             </div>
             <div>
                 <p className={style.plataformas}>géneros</p>
-                {detail.genres?detail.genres.map(el=><p>{el}</p>): null}
+                {detail.genres?detail.genres.map((el, id)=><p key={id}>{el}</p>): null}
             </div>
             </div>
             <p className={style.description}>{detail.description}</p>

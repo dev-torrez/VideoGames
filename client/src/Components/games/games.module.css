@@ -1,42 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&family=Lato:wght@300;900&family=Montserrat:wght@200&family=PT+Sans&display=swap');
 
 .container_game{
-    width: 215px;
-    height: 200px;
+    width: 270px;
+    height: 300px;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 10px;
     overflow: hidden;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     cursor: pointer;
 }
+.container_game:hover{
+    font-size: 20px;
+}
 
 .container_game img{
-    height: 100%;
-    cursor: pointer;
+    width: 350px;
+    height: 190px;
 }
-
-.container_game img:hover{
-    filter: blur(1px);
-}
-
 .title{
-    width: 50%;
+    width: 270px;
     color: white;
     font-family: 'Kanit', sans-serif;
     text-align: center;
-    position: absolute;
-    font-size: 20px;
-}
-.title:hover{
-    color: transparent;
 }
 
 .action{
-    color: transparent;
-    position: absolute;
-    margin-top: 50px;
+    width: 200px;
+    color: white;
     font-family: 'Kanit', sans-serif;
-    font-size: 20px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.rating{
+    color: red;
 }
