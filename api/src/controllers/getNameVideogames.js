@@ -9,11 +9,10 @@ const getNameVideogames = async(req, res)=>{
     try{
         const dbVideogames = await Videogame.findAll({
             where:{
-                name:{
-                    [Op.like]: `%${name}%`,
-                }
+                name:{ [Op.like]: `%${name}%` }
             }
         })
+
         const response = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${key}`);
         const api = response.data.results;
         if(api.length>0){
@@ -34,7 +33,7 @@ const getNameVideogames = async(req, res)=>{
                         return{
                             id: element.id,
                             name: element.name,
-                            description: respuesta.data.description,
+                            description: respuesta.data.description_raw,
                             platforms: element.platforms? element.platforms.map(el=>el.platform.name): null,
                             image: element.background_image,
                             date: element.released,

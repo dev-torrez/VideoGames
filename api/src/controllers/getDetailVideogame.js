@@ -28,7 +28,7 @@ const getDetailVideogame = async(req, res)=>{
                 name: data.name,
                 image: data.background_image,
                 platforms: data.platforms.map(el=>el.platform.name),
-                description: data.description,
+                description: data.description_raw,
                 date: data.released,
                 rating: data.rating,
                 genres: data.genres.map(el=>el.name)

@@ -1,28 +1,27 @@
+const {Videogame, Genre} = require('../db.js');
 const axios = require('axios');
 require('dotenv').config();
 const {key} = process.env;
-const {Videogame, Genre} = require('../db.js');
 
 const getVideogames = async(req, res)=>{
-    const promesas = [];
+        const promesas = [];
         try{
-            let dbVideogames = await Videogame.findAll({include: Genre});
+              let dbVideogames = await Videogame.findAll({include: Genre});
               dbVideogames = dbVideogames.map((videogame) => {
               const genres = videogame.genres.map((genre) => genre.name);
               return {
                 ...videogame.toJSON(),
                 genres: genres,
               };
-            });
+              });
 
-            for (let i = 1; i < 5; i++) {
-                const promesa = axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`);
+              for(let i = 1; i < 3; i++) {
+                const promesa = await axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`);
                 promesas.push(promesa); 
               }
             
               const response = await Promise.all(promesas);
-            
-              const apiVideogames =await Promise.all(response.map((response) => response.data.results).flat().map((el)=>{
+              const apiVideogames =await Promise.all(response.map((response) =>response.data.results).flat().map((el)=>{
                 return axios.get(`https://api.rawg.io/api/games/${el.id}?key=${key}`)
                 .then((respuesta) => {
                   return {
@@ -35,7 +34,7 @@ const getVideogames = async(req, res)=>{
                     rating: el.rating,
                     genres: el.genres.map((genre) => genre.name),
                   };
-                });
+                })
               }))
               const videogames = [...dbVideogames,...apiVideogames];
               res.status(200).json(videogames);
@@ -44,5 +43,6 @@ const getVideogames = async(req, res)=>{
             res.status(500).json({message: error.message});
         }
 }
+        
 
 module.exports = getVideogames;

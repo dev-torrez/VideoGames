@@ -9,9 +9,7 @@ const getGenres = async(req, res)=>{
         const genres = response.data.results; 
         const gen = genres.map(el=>el.name);
         gen.map((name)=>{
-            Genre.create({
-                name
-            })
+            Genre.create({name});
         })
         res.json(gen);
     }
