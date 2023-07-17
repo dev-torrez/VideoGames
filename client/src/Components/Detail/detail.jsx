@@ -19,22 +19,25 @@ export function Detail({detail, detailVideogames}){
             <h3>{detail.name}</h3>
             <div className={style.container_image_platforms}>
             <img src={detail.image} alt="" className={style.detail_image}/>
-            <div>
-                <p className={style.plataformas}>Plataformas</p>
-                {detail.platforms?detail.platforms.map((el, id)=><p key={id}>{el}</p>) :null}
-            </div>
-            <div>
-                <p className={style.plataformas}>Fecha de lanzamiento</p>
-                <p>{detail.date}</p>
-            </div>
-            <div>
-                <p className={style.plataformas}>Clasificacion</p>
-                <p>{detail.rating}</p>
-            </div>
-            <div>
-                <p className={style.plataformas}>géneros</p>
-                {detail.genres?detail.genres.map((el, id)=><p key={id}>{el}</p>): null}
-            </div>
+                <div>
+                    <p className={style.plataformas}>Plataformas</p>
+                    {detail.platforms?detail.platforms.map((el, id)=><p key={id}>{el}</p>) :null}
+                </div>
+
+                <div>
+                    <p className={style.plataformas}>Fecha de lanzamiento</p>
+                    <p>{detail.date}</p>
+                </div>
+
+                <div>
+                    <p className={style.plataformas}>Clasificacion</p>
+                    <p>{detail.rating}</p>
+                </div>
+
+                <div>
+                    <p className={style.plataformas}>géneros</p>
+                    {detail.genres?detail.genres.map((el, id)=><p key={id}>{el}</p>): null}
+                </div>
             </div>
             <p className={style.description}>{detail.description}</p>
         </div>

@@ -51,9 +51,10 @@ export default function VideoGames({games}){
                 {items.map((el, id)=><Games data={el} key={id}></Games>)} 
             </div>
             <div className={style.container_current}>
+
             <button onClick={prevHandler}><img src={izquierda} alt="" /></button>
             <div className={style.page}>
-                {itemArray.map((el, id)=><p key={id} onClick={()=>itemHandler(el)}>{el}</p> )}
+                {itemArray.map((el, id)=><p key={id} onClick={()=>itemHandler(el)} className={el===currentPage+1?style.item:style.noitem}>{el}</p> )}
             </div>
             <button onClick={nextHandler}><img src={derecha} alt="" /></button>
             </div>

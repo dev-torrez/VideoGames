@@ -3,19 +3,24 @@ import Controls from '../Controls/controls';
 import VideoGames from '../Videogames/videoGames.jsx';
 import { connect } from 'react-redux';
 import {videoGames} from '../../Redux/action.js'; 
-import { useEffect, useState } from 'react';
+import { useEffect, useState} from 'react';
 
 export function HomePage({videogames, allVideogames}){
 
     const [loading, setLoading] = useState(false);
 
     useEffect(()=>{
+        if(videogames.length > 0){
+            setLoading(true)
+        }
+        else{
             const fetchData = async () => {
                 await allVideogames();
-                setLoading(true);
-              };
-              fetchData();
-    }, [allVideogames])
+                setLoading(true)
+            };
+            fetchData();
+        }
+    }, [allVideogames, videogames.length])
 
     return(
         <div className={style.container_hompage}>

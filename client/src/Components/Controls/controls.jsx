@@ -7,7 +7,6 @@ export default function Controls(){
 
     const dispatch = useDispatch();
 
-
     const handleSelectGender = (event)=>{
         dispatch(genderFilter(event.target.value));
     }
@@ -25,14 +24,18 @@ export default function Controls(){
     return(
         <div className={style.container}>
             <select className={style.container_filter_genre} onChange={handleSelectGender}>
+                <option value="todos">Generos</option>
                 <option value="todos">Todos</option>
                 {generos.map((genero, id)=><option value={genero} key={id}>{genero}</option>)}
             </select>
+
             <select className={style.container_filter_origin} onChange={handleSelectOrigin}>
+                <option value="todos">Origen</option>
                 <option value="todos">Todos</option>
                 <option value="creados">Creados</option>
                 <option value="api">Api</option>
             </select>
+
             <select className={style.container_filter_order} onChange={handleSelectOrder}>
                 <option value="normal">Normal</option>
                 <option value="mayor">Mayor a Menor</option>
@@ -40,6 +43,7 @@ export default function Controls(){
                 <option value="az">A - z</option>
                 <option value="za">Z - a</option>
             </select>
+            
             <Link to={'/form'} style={{ textDecoration: 'none' }}>
             <button className={style.boton}>Crear Juego</button>
             </Link>

@@ -26,23 +26,25 @@ export default function Form(){
             }
             else{
                 if(!validateImage.test(dato.image)){
-                    setMessage('La imagen no es correcto')
+                    setMessage('La imagen debe ser una url')
                 }
                 else{
                     if(!validateDescription.test(dato.description)){
-                        setMessage('La descripcion debe contener mas letras')
+                        setMessage('La descripcion debe contener mas de 15 caracteres')
                     }
                     else{
                         if(dato.date.length > 10){
-                            setMessage('el tiempo esta mal')
+                            setMessage('la fecha de lanzamineto esta mal')
                         }
                         else{
                             if(dato.rating > 10 || dato.rating <0){
-                                setMessage('el Rating debe estar entre 0-10')
+                                setMessage('La clasificacion debe estar entre 0-10')
                             }
                             else{
+                                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                                checkboxes.forEach((checkbox) => {checkbox.checked = false});
                                 axios.post('http://localhost:3001/videogames', dato)
-                                setMessage('El juego fue creado con Exito')
+                                .then(response=>setMessage(response.data.message))
                                 setDato({ name: '', image: '', description: '', platforms: [], date: '', rating: 0, genres: []})
                             }
                         }
@@ -80,8 +82,8 @@ export default function Form(){
 
     const generos = ['Action', 'Indie', 'Adventure', 'RPG', 'Strategy', 'Shooter', 'Casual', 'Simulation', 'Puzzle', 'Arcade', 'Platformer', 'Massively Multiplayer', 'Racing', 'Sports', 'Fighting', 'Family', 'Board Games', 'Educational', 'Card'];
 
-    const plataformas = ['PC', 'iOS', 'Android', 'macOS', 'PLay Station 4', 'Play Station 5', 'xBOX', 'PS Vita']
-    console.log(dato.date)
+    const plataformas = ['PC', 'iOS', 'Android', 'macOS', 'PLay Station 4', 'Play Station 5', 'xBOX', 'PS Vita'];
+
     return(
         <div className={style.container_form}>
             <div className={style.container_form_inputs}>
