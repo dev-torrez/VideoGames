@@ -1,5 +1,8 @@
 body{
-    background-color: black;
+    background-image: url('https://img.freepik.com/vector-gratis/fondo-poligonal-diseno-plano_23-2148921195.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 .loader{
     width: 92%;

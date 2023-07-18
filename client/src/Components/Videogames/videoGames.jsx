@@ -40,6 +40,7 @@ export default function VideoGames({games}){
             setItems([...games].splice(initial, intemsPage));
             setCurrentPage(val-1);
     }
+
     const itemArray = []
     for(var i=1; i<=counter; i++){
         itemArray.push(i);

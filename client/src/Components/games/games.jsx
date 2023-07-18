@@ -22,7 +22,7 @@ export default function Games({data}){
             <div className={style.container_rating}>
             <p className={style.rating}>{data.rating}</p>
             <div>
-            {estrellas.map(image=> <img src={image} alt="" className={style.estrella_image}/> )}
+            {estrellas.map((image, id)=> <img src={image} alt="" className={style.estrella_image} key={id}/> )}
             </div>
             </div>
         </div>

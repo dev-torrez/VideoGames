@@ -36,10 +36,14 @@
 .container_current button{
     all: unset;
     cursor: pointer;
+    width: 20px;
+    height: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .container_current img{
-    width: 30px;
-    height: 25px;
+    width: 20px;
 }
 .page{
     display: flex;

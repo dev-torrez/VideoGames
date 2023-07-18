@@ -15,7 +15,7 @@ const postCreateVideogame = async(req, res)=>{
         }
     }
     catch(error){
-        res.status(500).json({message: 'Faltan datos para crear el videojuego...'});
+        res.status(500).json({message: error.message});
     }
 }
 
