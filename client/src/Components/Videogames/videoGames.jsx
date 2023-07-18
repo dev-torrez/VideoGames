@@ -48,7 +48,7 @@ export default function VideoGames({games}){
     return(
         <div className={style.container_videogames}>
             <div className={style.container_games}>
-                {items.map((el, id)=><Games data={el} key={id}></Games>)} 
+            {items.map((el, id)=><Games data={el} key={id}></Games>)} 
             </div>
             <div className={style.container_current}>
 

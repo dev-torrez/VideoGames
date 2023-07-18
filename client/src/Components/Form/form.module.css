@@ -29,18 +29,19 @@
     border-radius: 5px;
 }
 .container_form_inputs_label h1{
-    background-image: linear-gradient(to right, rgb(243, 12, 12), rgb(255, 127, 7));
+    background-image: linear-gradient(to right, rgb(12, 131, 243), rgb(7, 255, 214));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-weight: bold;
 }
 .input_normal{
-    background-color: #111;
+    all: unset;
+    background-color: white;
     border: none;
     width: 400px;
     height: 40px;
-    color: rgb(199, 194, 194);
+    color: black;
     text-align: center;
     border-bottom: 1px solid white;
 }
@@ -67,7 +68,7 @@
 }
 .formulario_boton{
     all: unset;
-    background-image: linear-gradient(to right, rgb(243, 12, 12), rgb(255, 127, 7));
+    background-image: linear-gradient(to right, rgb(12, 131, 243), rgb(7, 255, 214));
     width: 150px;
     text-align: center;
     height: 50px;

@@ -1,8 +1,5 @@
 body{
-    background-image: url('https://www.xtrafondos.com/wallpapers/juego-eve-online-941.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-color: black;
 }
 .loader{
     width: 92%;

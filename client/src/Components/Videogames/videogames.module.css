@@ -3,7 +3,6 @@
 
 .container_videogames{
     width: 250px;
-    height: 99.5vh;
     position: relative;
     top: 130px;
     left: 220px;
@@ -17,7 +16,7 @@
 .container_games{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    grid-gap: 15px;
     justify-items: center;
 }
 

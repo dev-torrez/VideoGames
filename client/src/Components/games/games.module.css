@@ -3,7 +3,7 @@
 .container_game{
     width: 270px;
     height: 300px;
-    background-color: black;
+    background-color: #151515;
     border-radius: 10px;
     overflow: hidden;
     display: flex;
@@ -11,17 +11,13 @@
     align-items: center;
     cursor: pointer;
 }
-.container_game:hover{
-    font-size: 20px;
-}
-
-.container_game img{
+.image{
     width: 350px;
     height: 190px;
 }
 .title{
     width: 270px;
-    color: white;
+    color: aqua;
     font-family: 'Kanit', sans-serif;
     text-align: center;
 }
@@ -35,6 +31,17 @@
     justify-content: space-around;
     flex-wrap: wrap;
 }
+.container_rating{
+    display: flex;
+    width: 200px;
+    height: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
 .rating{
     color: red;
+}
+.estrella_image{
+    width: 20px;
+    position: relative;
 }

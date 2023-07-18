@@ -37,7 +37,7 @@ export default function Form(){
                             setMessage('la fecha de lanzamineto esta mal')
                         }
                         else{
-                            if(dato.rating > 10 || dato.rating <0){
+                            if(dato.rating > 5 || dato.rating <0){
                                 setMessage('La clasificacion debe estar entre 0-10')
                             }
                             else{
@@ -89,6 +89,7 @@ export default function Form(){
             <div className={style.container_form_inputs}>
                 <div className={style.container_form_inputs_label}>
                 <h1>Crear Videojuego</h1>
+
                 <label htmlFor="">Nombre</label>
                 <input type="text" value={dato.name} name='name' onChange={onchangeDatos} className={style.input_normal}/>
 

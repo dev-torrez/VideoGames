@@ -11,7 +11,7 @@ export function HomePage({videogames, allVideogames}){
 
     useEffect(()=>{
         if(videogames.length > 0){
-            setLoading(true)
+                setLoading(true)
         }
         else{
             const fetchData = async () => {
