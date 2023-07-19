@@ -38,7 +38,7 @@ export default function Form(){
                         }
                         else{
                             if(dato.rating > 5 || dato.rating <0){
-                                setMessage('La clasificacion debe estar entre 0-10')
+                                setMessage('La clasificacion debe estar entre 0-5')
                             }
                             else{
                                 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
