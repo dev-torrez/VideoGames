@@ -13,13 +13,15 @@ const reducer=(state = initialState, action)=>{
                 ...state,
                 videogames:[...action.payload],
                 recursoExtra:[...action.payload],
-                genresFilter:[...action.payload]
+                genresFilter:[...action.payload],
+                maxminFilter:[...action.payload]
             }
         case 'NAME_VIDEOGAMES':
             return{
                 ...state,
                 videogames:[...action.payload],
-                genresFilter:[...action.payload]
+                genresFilter:[...action.payload],
+                maxminFilter:[...action.payload]
             }
         case 'ID_DETAIL':
             return{
@@ -27,37 +29,48 @@ const reducer=(state = initialState, action)=>{
                 detail:{...action.payload}
             }   
         case 'GENDER_FILTER':
-            return{
-                ...state,
-                videogames:[...action.payload],
-                genresFilter:[...action.payload],
-                recursoExtra:[...action.payload]
-            }    
-        case 'ORIGIN_FILTER':
+            if(action.payload === 'todos'){
+                return{
+                    ...state,
+                    videogames:[...state.recursoExtra],
+                    genresFilter:[...state.recursoExtra]
+                }
+            }
+            else{
+                return{
+                    ...state,
+                    videogames:[...state.recursoExtra.filter(el=>el.genres.some(genre=> genre === action.payload))],
+                    genresFilter:[...state.recursoExtra.filter(el=>el.genres.some(genre=> genre === action.payload))],
+                    maxminFilter:[...state.recursoExtra.filter(el=>el.genres.some(genre=> genre === action.payload))]
+                }    
+            }
+                case 'ORIGIN_FILTER':
             if(action.payload === 'todos'){
                 return{
                     ...state,
                     videogames:[...state.genresFilter],
-                    recursoExtra:[...state.genresFilter]
+                    maxminFilter:[...state.genresFilter]
                 }
             }
             if(action.payload === 'creados'){
                 return{
                     ...state,
-                    videogames:[...state.genresFilter.filter(el=>typeof(el.id) === typeof('pru3v4') )]
+                    videogames:[...state.genresFilter.filter(el=>typeof(el.id) === typeof('pru3v4') )],
+                    maxminFilter:[...state.genresFilter.filter(el=>typeof(el.id) === typeof('pru3v4') )]
                 }    
             }
             else{
                 return{
                     ...state,
-                    videogames:[...state.genresFilter.filter(el=>typeof(el.id) !== typeof('sj44d4'))]
+                    videogames:[...state.genresFilter.filter(el=>typeof(el.id) !== typeof('s3edes'))],
+                    maxminFilter:[...state.genresFilter.filter(el=>typeof(el.id) !== typeof('s3edes'))]
                 }
             }
         case 'ORDER_FILTER':
             if(action.payload === 'normal'){
                 return{
                     ...state,
-                    videogames:[...state.recursoExtra]
+                    videogames:[...state.maxminFilter]
                 }
             }
             if(action.payload === 'mayor'){

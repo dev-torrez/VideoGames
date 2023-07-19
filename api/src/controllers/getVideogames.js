@@ -15,13 +15,12 @@ const getVideogames = async(req, res)=>{
               };
               });
 
-              for(let i = 1; i < 3; i++) {
-                const promesa = await axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`);
-                promesas.push(promesa); 
+              for(let i = 1; i < 5; i++) {
+                promesas.push(axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`));
               }
             
               const response = await Promise.all(promesas);
-              const apiVideogames =await Promise.all(response.map((response) =>response.data.results).flat().map((el)=>{
+              const apiVideogames = await Promise.all(response.flatMap((response) =>response.data.results.map((el)=>{
                 return axios.get(`https://api.rawg.io/api/games/${el.id}?key=${key}`)
                 .then((respuesta) => {
                   return {
@@ -35,7 +34,7 @@ const getVideogames = async(req, res)=>{
                     genres: el.genres.map((genre) => genre.name),
                   };
                 })
-              }))
+              })))
               const videogames = [...dbVideogames,...apiVideogames];
               res.status(200).json(videogames);
         }
