@@ -11,7 +11,7 @@ const getGenres = async(req, res)=>{
         gen.map((name)=>{
             Genre.create({name});
         })
-        res.json(gen);
+        res.status(200).json(gen);
     }
     catch(error){
         res.status(500).json({message: error.message});

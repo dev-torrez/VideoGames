@@ -15,7 +15,7 @@ const getVideogames = async(req, res)=>{
               };
               });
 
-              for(let i = 1; i < 5; i++) {
+              for(let i = 1; i < 4; i++) {
                 promesas.push(axios.get(`https://api.rawg.io/api/games?key=${key}&page=${i}`));
               }
             

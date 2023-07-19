@@ -3,7 +3,7 @@ const initialState = {
     detail:{},
     genresFilter:[],
     maxminFilter:[],
-    recursoExtra:[]
+    recursoExtra:[],
 }
 
 const reducer=(state = initialState, action)=>{
@@ -17,12 +17,12 @@ const reducer=(state = initialState, action)=>{
                 maxminFilter:[...action.payload]
             }
         case 'NAME_VIDEOGAMES':
-            return{
-                ...state,
-                videogames:[...action.payload],
-                genresFilter:[...action.payload],
-                maxminFilter:[...action.payload]
-            }
+                return{
+                    ...state,
+                    videogames:[...action.payload],
+                    genresFilter:[...action.payload],
+                    maxminFilter:[...action.payload],
+                }
         case 'ID_DETAIL':
             return{
                 ...state,

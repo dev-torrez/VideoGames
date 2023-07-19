@@ -19,10 +19,10 @@ export const nameFilter = (inputValue)=>{
       try{
           const response = await axios.get(`http://localhost:3001/videogame?name=${inputValue}`);
           const videogame = response.data;
-          dispatch({ type: 'NAME_VIDEOGAMES', payload: videogame});
+            dispatch({ type: 'NAME_VIDEOGAMES', payload: videogame});
       }
       catch(error){
-          dispatch({ type: 'FETCH_ERROR', payload: error.message });
+        dispatch({ type: 'FETCH_ERROR', payload: error.message });
       }
   }
 }

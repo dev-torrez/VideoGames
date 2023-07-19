@@ -13,9 +13,8 @@ export function App({nameFilter}) {
   const {pathname} = useLocation();
 
   const nameHandler = (inputValue)=>{ 
-      nameFilter(inputValue) 
-  }
-  
+    nameFilter(inputValue) 
+    }
   return (
     <div>
         {pathname === '/'?null: <NavBar buscar={nameHandler}/>}

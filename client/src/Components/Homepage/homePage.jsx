@@ -36,7 +36,7 @@ export function HomePage({videogames, allVideogames}){
 
 const mapStateToProps = (state)=>{
     return{
-        videogames: state.videogames
+        videogames: state.videogames,
     }
 }
 
