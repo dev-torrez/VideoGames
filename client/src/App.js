@@ -12,7 +12,9 @@ export function App({nameFilter}) {
 
   const {pathname} = useLocation();
 
-  const nameHandler = (inputValue)=>{ nameFilter(inputValue) }
+  const nameHandler = (inputValue)=>{ 
+      nameFilter(inputValue) 
+  }
   
   return (
     <div>
