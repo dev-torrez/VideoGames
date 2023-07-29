@@ -43,7 +43,7 @@ export default function Form(){
                             else{
                                 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
                                 checkboxes.forEach((checkbox) => {checkbox.checked = false});
-                                axios.post('http://localhost:3001/videogames', dato)
+                                axios.post('/videogames', dato)
                                 .then(response=>setMessage(response.data.message))
                                 setDato({ name: '', image: '', description: '', platforms: [], date: '', rating: 0, genres: []})
                             }
