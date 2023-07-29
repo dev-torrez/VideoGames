@@ -3,7 +3,7 @@ import axios from 'axios';
 export const videoGames = ()=>{
   return async(dispatch)=>{
     try{
-      const response = await axios.get('http://localhost:3001/videogames');
+      const response = await axios.get('/videogames');
       const videogame = response.data;
       dispatch({type: 'ALL_VIDEOGAMES', payload: videogame});
     }
@@ -16,7 +16,7 @@ export const videoGames = ()=>{
 export const nameFilter = (inputValue)=>{
   return async (dispatch)=>{
       try{
-          const response = await axios.get(`http://localhost:3001/videogame?name=${inputValue}`);
+          const response = await axios.get(`/videogame?name=${inputValue}`);
           const videogame = response.data;
             dispatch({ type: 'NAME_VIDEOGAMES', payload: videogame});
       }
@@ -29,7 +29,7 @@ export const nameFilter = (inputValue)=>{
 export const detailVideogames = (id)=>{
   return async (dispatch)=>{
       try{
-          const response = await axios.get(`http://localhost:3001/videogames/${id}`);
+          const response = await axios.get(`/videogames/${id}`);
           const videogameDetail = response.data;
           dispatch({type: 'ID_DETAIL', payload: videogameDetail});
       }
