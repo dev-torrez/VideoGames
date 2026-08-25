@@ -1,29 +1,28 @@
 import Home from './Components/Home/home.jsx';
-import homePage from './Components/Homepage/homePage.jsx';
+import HomePage from './Components/Homepage/homePage.jsx';
 import Detail from './Components/Detail/detail.jsx';
 import Form from './Components/Form/form.jsx';
 import NavBar from './Components/Navbar/navBar.jsx';
-import { Route, Switch } from 'react-router-dom';
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min.js';
 import { nameFilter } from './Redux/action.js';
 import { connect } from 'react-redux';
+import {Routes, Route, useLocation} from "react-router"
 
 export function App({nameFilter}) {
 
-  const {pathname} = useLocation();
+  const location = useLocation();
 
   const nameHandler = (inputValue)=>{ 
     nameFilter(inputValue) 
     }
   return (
     <div>
-        {pathname === '/'?null: <NavBar buscar={nameHandler}/>}
-        <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/videogames' component={homePage}/>
-          <Route exact path='/detail/:id' component={Detail}/>
-          <Route exact path='/form' component={Form}/>
-        </Switch>
+        {location.pathname === '/'?null: <NavBar buscar={nameHandler}/>}
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/videogames' element={<HomePage/>}/>
+          <Route path='/detail/:id' element={<Detail/>}/>
+          <Route path='/form' element={<Form/>}/>
+        </Routes>
     </div>
   );
 }
