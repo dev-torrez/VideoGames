@@ -3,17 +3,19 @@ import HomePage from './Components/Homepage/homePage.jsx';
 import Detail from './Components/Detail/detail.jsx';
 import Form from './Components/Form/form.jsx';
 import NavBar from './Components/Navbar/navBar.jsx';
-import { nameFilter } from './Redux/action.js';
-import { connect } from 'react-redux';
+import { nameFilter } from './features/videogames/videogamesSlice.js';
+import { useDispatch} from 'react-redux';
 import {Routes, Route, useLocation} from "react-router"
 
-export function App({nameFilter}) {
+export default function App() {
 
   const location = useLocation();
-
+  const dispatch = useDispatch()
+  
   const nameHandler = (inputValue)=>{ 
-    nameFilter(inputValue) 
-    }
+    dispatch(nameFilter(inputValue)) 
+  }
+
   return (
     <div>
         {location.pathname === '/'?null: <NavBar buscar={nameHandler}/>}
@@ -26,11 +28,3 @@ export function App({nameFilter}) {
     </div>
   );
 }
-
-const mapDispatchToProps = (dispatch)=>{
-  return{
-      nameFilter: (inputValue)=>dispatch(nameFilter(inputValue))
-    }
-}
-
-export default connect(null, mapDispatchToProps)(App)

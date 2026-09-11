@@ -2,16 +2,12 @@
 
 
 .container_videogames{
-    width: 250px;
+    width: calc(100% - 210px);
     position: relative;
-    top: 130px;
-    left: 220px;
+    top: 122px;
+    left: 210px;
 }
 
-.container_videogames h3{
-    margin-left: 20px;
-    margin-right: 20px;
-}
 
 .container_games{
     display: grid;
@@ -24,7 +20,7 @@
     background-color: white;
     position: fixed;
     top: 81px;
-    width: 1139px;
+    width: calc(100% - 210px);
     left: 210px;
     display: flex;
     justify-content: center;

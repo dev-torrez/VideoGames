@@ -1,16 +1,18 @@
 import { useParams } from "react-router-dom"
-import {connect} from 'react-redux';
-import { detailVideogames } from "../../Redux/action.js";
+import { detailVideogame } from "../../features/videogames/videogamesSlice";
 import { useEffect } from "react";
 import style from './detail.module.css';
+import { useDispatch, useSelector } from "react-redux";
 
-export function Detail({detail, detailVideogames}){
+export default function Detail(){
 
+    const detail = useSelector(state=>state.videogames.detail)
+    const dispatch = useDispatch()
     const {id} = useParams()
 
     useEffect(()=>{
-        detailVideogames(id);
-    },[detailVideogames, id])
+        dispatch(detailVideogame(id));
+    },[dispatch, id])
 
     return(
         <div className={style.container_detail_videogames}>
@@ -44,17 +46,3 @@ export function Detail({detail, detailVideogames}){
         </div>
     )
 }
-
-const mapStateToProps = (state)=>{
-    return{
-        detail: state.detail
-    }
-}
-
-const mapDispatchToProps = (dispatch)=>{
-    return{
-        detailVideogames: (id)=>{dispatch(detailVideogames(id))}
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Detail);

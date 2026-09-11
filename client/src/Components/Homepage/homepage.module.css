@@ -5,13 +5,12 @@ body{
     background-attachment: fixed;
 }
 .loader{
-    width: 92%;
     height: 100vh;
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 100px;
+    margin-left: 210px;
 }
 .loader__ball{
     display: inline-block;

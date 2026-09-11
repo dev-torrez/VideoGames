@@ -11,6 +11,7 @@ font-family: 'PT Sans', sans-serif; */
     background-color: #111;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 2px solid rgba(51,51,51,.25);
     position: fixed;
     z-index: 100;
@@ -38,7 +39,7 @@ font-family: 'PT Sans', sans-serif; */
 .container_buscar{
     display: flex;
     align-items: center;
-    margin-left: 550px;
+    margin-right: 20px;
 }
 
 .container_buscar p{

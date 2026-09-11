@@ -1,22 +1,22 @@
 import style from './controls.module.css';
 import {Link} from 'react-router-dom';
 import { useDispatch } from "react-redux"
-import { genderFilter, originFilter, orderFilter } from '../../Redux/action.js';
+import { filterByGender, filterByOrigin, orderVideoGames } from '../../features/videogames/videogamesSlice';
 
 export default function Controls(){
 
     const dispatch = useDispatch();
 
     const handleSelectGender = (event)=>{
-        dispatch(genderFilter(event.target.value));
+        dispatch(filterByGender(event.target.value));
     }
 
     const handleSelectOrigin = (event)=>{
-        dispatch(originFilter(event.target.value));
+        dispatch(filterByOrigin(event.target.value));
     }
 
     const handleSelectOrder = (event)=>{
-        dispatch(orderFilter(event.target.value));
+        dispatch(orderVideoGames(event.target.value));
     }
 
     const generos = ['Action', 'Indie', 'Adventure', 'RPG', 'Strategy', 'Shooter', 'Casual', 'Simulation', 'Puzzle', 'Arcade', 'Platformer', 'Massively Multiplayer', 'Racing', 'Sports', 'Fighting', 'Family', 'Board Games', 'Educational', 'Card'];
@@ -42,11 +42,9 @@ export default function Controls(){
                 <option value="za">Z - a</option>
             </select>
             
-            <Link to={'/form'} style={{ textDecoration: 'none' }}>
             <div className={style.card}>
-            <button className={style.boton}>Crear Juego</button>
+            <Link to={'/form'} style={{ textDecoration: 'none' }} className={style.boton}>Crear Juego</Link>
             </div>
-            </Link>
         </div>
     )
 }

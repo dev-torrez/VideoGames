@@ -3,9 +3,9 @@
 .container{
     background-color: #111;
     width: 210px;
-    height: 100vh;
+    height: calc(100vh - 82px);
     position: fixed;
-    padding-top: 85px;
+    margin-top: 82px;
 }
 
 select{
@@ -29,12 +29,12 @@ select:hover{
     width: 210px;
     height: 115px;
     background-color: #111;
-    position: relative;
+    position: absolute;
     border-radius: 5px;
     display: grid;
     place-items: center;
     overflow: hidden;
-    top: 260px;
+    bottom: 0px;
 }
 .card::before{
     content: "";
@@ -61,6 +61,8 @@ select:hover{
     padding: 10px;
     font-size: 15px;
     text-transform: uppercase;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: white;
     background-image: linear-gradient(to right, rgb(12, 131, 243), rgb(7, 255, 214));
     border: none;
