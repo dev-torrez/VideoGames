@@ -46,7 +46,8 @@ const videogamesSlice = createSlice({
         genresFilter:[],
         maxminFilter:[],
         recursoExtra:[],
-        loadingGames: false
+        loadingGames: false,
+        loadingDetail: false
     },
     reducers: {
         filterByGender: (state, action)=>{
@@ -132,6 +133,10 @@ const videogamesSlice = createSlice({
         })
         builder.addCase(detailVideogame.fulfilled, (state, action)=>{
             state.detail = action.payload
+            state.loadingDetail = true
+        })
+        .addCase(detailVideogame.pending, (state)=>{
+            state.loadingDetail = false
         })
     }
 });
