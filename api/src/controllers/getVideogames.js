@@ -1,12 +1,11 @@
-const {Videogame, Genre} = require('../db.js');
+const {videogame, genre} = require('../db.js');
 const axios = require('axios');
-require('dotenv').config();
 const {key} = process.env;
 
 const getVideogames = async(req, res)=>{
         const promesas = [];
         try{
-              let dbVideogames = await Videogame.findAll({include: Genre});
+              let dbVideogames = await videogame.findAll({include: genre});
               dbVideogames = dbVideogames.map((videogame) => {
               const genres = videogame.genres.map((genre) => genre.name);
               return {

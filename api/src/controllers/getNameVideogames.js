@@ -1,5 +1,4 @@
 const axios = require('axios');
-require('dotenv').config();
 const {key} = process.env;
 const {Videogame, Genre} = require('../db.js');
 const {Op} = require('sequelize');

@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
-    "test": "mocha -w ./tests/**/*.spec.js"
+    "start": "node ./index.js"
   },
   "author": "Henry",
   "license": "ISC",
@@ -14,21 +13,21 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "morgan": "^1.10.0",
-    "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "axios": "^1.20.0",
+    "body-parser": "^2.3.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "morgan": "^1.12.1",
+    "pg": "^8.23.0",
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^8.2.1",
-    "nodemon": "^2.0.6",
-    "supertest": "^6.0.1",
-    "supertest-session": "^4.1.0"
+    "chai": "^6.2.2",
+    "mocha": "^12.0.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.0",
+    "supertest-session": "^5.0.1"
   }
 }
