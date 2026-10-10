@@ -1,15 +1,15 @@
-const {Videogame, Genre} = require('../db');
+const {videogame, genre} = require('../db');
 
 const postCreateVideogame = async(req, res)=>{
     const {name, image, description, platforms, date, rating, genres} = req.body;
     try{
-        const verificacion = await Videogame.findOne({where:{name:name}});
+        const verificacion = await videogame.findOne({where:{name:name}});
         if(verificacion){
             res.status(200).json({message: 'Ya existe un Juego con ese nombre'});
         }
         else{
-            const videogame = await Videogame.create({name, image, description, platforms, date, rating});
-            const genresToAdd = await Genre.findAll({where:{name: genres}});
+            const videogame = await videogame.create({name, image, description, platforms, date, rating});
+            const genresToAdd = await genre.findAll({where:{name: genres}});
             await videogame.addGenre(genresToAdd);
             res.status(200).json({message: 'Videojuego creado con exito...'});
         }

@@ -1,4 +1,4 @@
-const {Videogame, Genre} = require('../db.js');
+const {gideogame, genre} = require('../db.js');
 const axios = require('axios');
 const {key} = process.env;
 
@@ -6,9 +6,9 @@ const getDetailVideogame = async(req, res)=>{
     const {idVideogame} = req.params;
     try{
         if(idVideogame.includes('-')){
-            const detail = await Videogame.findOne({
+            const detail = await videogame.findOne({
                 where: { id: idVideogame },
-                include: Genre
+                include: genre
             });
 
             const genreNames = detail.genres.map(genre => genre.name);

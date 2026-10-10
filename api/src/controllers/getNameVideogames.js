@@ -1,14 +1,14 @@
 const axios = require('axios');
 const {key} = process.env;
-const {Videogame, Genre} = require('../db.js');
+const {videogame, genre} = require('../db.js');
 const {Op} = require('sequelize');
 
 const getNameVideogames = async(req, res)=>{
     const {name} = req.query;
     try{
-        let dbVideogames = await Videogame.findAll({
+        let dbVideogames = await videogame.findAll({
             where:{name:{ [Op.iLike]: `%${name}%` }},
-            include: Genre
+            include: genre
         })
         dbVideogames = dbVideogames.map((videogame) => {
         const genres = videogame.genres.map((genre) => genre.name);
