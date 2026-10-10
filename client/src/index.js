@@ -6,8 +6,8 @@ import { store}  from './store/store';
 import App from './App';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-//axios.defaults.baseURL = 'https://videogames-dev-ekhg.4.us-1.fl0.io/';
+//axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'https://videogames-tki0.onrender.com'
 
 const root = createRoot(document.getElementById('root'))
 root.render(
